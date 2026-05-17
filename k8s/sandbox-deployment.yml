@@ -14,9 +14,10 @@ spec:
       labels:
         app: sandbox
     spec:
+      serviceAccountName: resource-manager
       containers:
         - image: sandbox:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           name: main-sandbox-container
           resources:
             limits:
