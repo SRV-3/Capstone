@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sandbox-deployemnt
+  name: sandbox-deployment
   labels:
-    name: sandbox-deployemnt
+    name: sandbox-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: sandbox
+      app: sandbox
   template:
     metadata:
       labels:
-        name: sandbox
+        app: sandbox
     spec:
       containers:
         - image: sandbox:latest
+          imagePullPolicy: IfNotPresent
           name: main-sandbox-container
           resources:
             limits:
@@ -38,4 +39,4 @@ spec:
             timeoutSeconds: 10
           ports:
             - containerPort: 3000
-              name: my-name
+              name: main-sandbox
