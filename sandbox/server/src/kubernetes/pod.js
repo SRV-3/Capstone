@@ -10,6 +10,26 @@ export async function createPod(sandboxId) {
       },
     },
     spec: {
+      volumes: [
+        {
+          name: "workspace-volume",
+          emptyDir: {},
+        },
+      ],
+      initContainers: [
+        {
+          image: "blueprint",
+          imagePullPolicy: "Always",
+          name: "init-container",
+          command: ["sh", "-c", "cp -r /workspace/. /seed/"],
+          volumeMounts: [
+            {
+              name: "workspace-volume",
+              mountPath: "/seed",
+            },
+          ],
+        },
+      ],
       containers: [
         {
           image: "blueprint",
@@ -20,6 +40,28 @@ export async function createPod(sandboxId) {
             limits: { cpu: "500m", memory: "1Gi" },
             requests: { cpu: "250m", memory: "500Mi" },
           },
+          volumeMounts: [
+            {
+              name: "workspace-volume",
+              mountPath: "/workspace",
+            },
+          ],
+        },
+        {
+          image: "agent",
+          imagePullPolicy: "Always",
+          name: "agent-container",
+          ports: [{ containerPort: 3000, name: "http" }],
+          resources: {
+            limits: { cpu: "500m", memory: "1Gi" },
+            requests: { cpu: "250m", memory: "500Mi" },
+          },
+          volumeMounts: [
+            {
+              name: "workspace-volume",
+              mountPath: "/workspace",
+            },
+          ],
         },
       ],
     },
