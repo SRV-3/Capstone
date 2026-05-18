@@ -12,9 +12,9 @@ export async function createPod(sandboxId) {
     spec: {
       containers: [
         {
+          image: "blueprint",
+          imagePullPolicy: "Always",
           name: "sandbox-container",
-          image: "template:v1",
-          imagePullPolicy: "Allways",
           ports: [{ containerPort: 5173, name: "http" }],
           resources: {
             limits: { cpu: "500m", memory: "1Gi" },

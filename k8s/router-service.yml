@@ -2,9 +2,11 @@ kind: Service
 apiVersion: v1
 metadata:
   name: router-service
+  labels:
+    app: router
 spec:
   selector:
-    app: router-server
+    app: router
   type: ClusterIP
   ports:
     - name: http
