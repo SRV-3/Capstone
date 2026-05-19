@@ -6,6 +6,7 @@ import { Server } from "socket.io";
 import http from "http";
 import pty from "node-pty";
 import os from "os";
+import cors from "cors";
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -14,6 +15,7 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({ methods: ["GET", "POST", "PATCH", "DELETE"], origin: "*" }));
 
 const io = new Server(httpServer, {
   cors: {
