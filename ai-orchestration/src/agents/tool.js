@@ -7,7 +7,7 @@ export const listFile = tool(
     console.log("=========================================");
     console.log("using llist files tool");
     console.log("=========================================");
-    const response = await axios.get("http://019e3b45-6925-74bb-b2fc-7e7a279a6ba3.agent.localhost/list-files");
+    const response = await axios.get("http://sandbox-service-019e3ea3-8fa5-744c-a664-b21daab83517:3000/list-files");
     console.log("=========================================");
     console.log("response:", response.data);
     console.log("=========================================");
@@ -26,7 +26,7 @@ export const readFile = tool(
     console.log("=========================================");
     console.log("using read files tool");
     console.log("=========================================");
-    const response = await axios.get(`http://019e3b45-6925-74bb-b2fc-7e7a279a6ba3.agent.localhost/read-files?files=` + files.join(","));
+    const response = await axios.get(`http://sandbox-service-019e3ea3-8fa5-744c-a664-b21daab83517:3000/read-files?files=` + files.join(","));
     console.log("=========================================");
     console.log("response:", response.data);
     console.log("=========================================");
@@ -49,7 +49,7 @@ export const updateFile = tool(
     console.log("using update and creates files tool");
     console.log(files);
     console.log("=========================================");
-    const response = await axios.patch(`http://019e3b45-6925-74bb-b2fc-7e7a279a6ba3.agent.localhost/update-files`, {
+    const response = await axios.patch(`http://sandbox-service-019e3ea3-8fa5-744c-a664-b21daab83517:3000/update-files`, {
       updates: files,
     });
     console.log("=========================================");
