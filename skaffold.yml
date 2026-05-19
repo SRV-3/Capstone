@@ -12,12 +12,6 @@ build:
       sync:
         infer:
           - "src/**"
-
-    - image: agent
-      context: sandbox/agent
-      docker:
-        dockerfile: Dockerfile
-
     - image: router
       context: sandbox/router
       docker:
@@ -30,6 +24,10 @@ build:
 
     - image: blueprint
       context: sandbox/blueprint
+      docker:
+        dockerfile: Dockerfile
+    - image: agent
+      context: sandbox/agent
       docker:
         dockerfile: Dockerfile
 manifests:
