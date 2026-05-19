@@ -38,10 +38,7 @@ app.get("/list-files", async (req, res) => {
       const fullPath = path.join(dir, entry.name);
       const relativePath = path.relative(baseDir, fullPath);
 
-      if (
-        entry.isDirectory() &&
-        ["node_modules", ".git", "dist"].includes(entry.name)
-      ) {
+      if (entry.isDirectory() && ["node_modules", ".git", "dist"].includes(entry.name)) {
         continue;
       }
 
