@@ -23,7 +23,7 @@ app.use(passport.initialize());
       callbackURL: "/api/auth/google/callback",
     },
     (accessToken, refreshToken, profile, done) => {
-      return donef(null, profile);
+      return done(null, profile);
     },
   ),
 ),

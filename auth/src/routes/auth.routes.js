@@ -1,6 +1,7 @@
 import { Router } from "express";
 import passport from "passport";
-import userModel from "../models/user.model.js";
+import User from "../models/user.model.js";
+import jwt from "jsonwebtoken";
 
 const router = Router();
 
@@ -11,10 +12,6 @@ router.get(
     scope: ["profile", "email"],
   }),
 );
-
-router.get("/googlee", (req, res) => {
-  res.json({ message: "ok" });
-});
 
 router.get(
   "/google/callback",
